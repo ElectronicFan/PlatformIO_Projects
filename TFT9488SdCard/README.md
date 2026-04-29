@@ -1,6 +1,6 @@
 # ESP32 ILI9488 JPEG Slideshow (SD Card + TFT_eSPI)
 
-This project runs a JPEG slideshow on an ESP32 using an ILI9488 TFT display and an SD card, with both devices running on **separate SPI buses** for maximum stability and performance.
+This project runs a JPEG slideshow on an ESP32 S3 using an ILI9488 TFT display and an SD card, with both devices running on **separate SPI buses** for maximum stability and performance.
 
 Built and tested using **PlatformIO in VS Code**.
 
