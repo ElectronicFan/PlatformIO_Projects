@@ -1,7 +1,5 @@
 # 📺 ESP32-S3 TFT + Touch + SD Project
 
-**Multi-Protocol Support:** Prepared for TTL-USB, Bluetooth (HC-05 / DT-06), and BLE.
-
 ---
 
 ## 🛠 Hardware Configuration
