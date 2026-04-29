@@ -30,6 +30,8 @@
 | TOUCH_IRQ  | 1   | Interrupt |
 | SD_CS      | 21  | SPI Bus 2 |
 
+![Image](DeviceImage.jpg)
+
 ---
 
 ## 💻 Software Stack
