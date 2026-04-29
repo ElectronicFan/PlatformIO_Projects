@@ -1,5 +1,5 @@
 /* * =================================================================
- * PROJECT: Issac Engineer Uploader (Go-Box)
+ * PROJECT: Demo Uploader
  * HARDWARE: ESP32 + XPT2046 Touch + TFT Display + SD Card(Optional)
  * CONFIGURATION: Dual SPI (Separate Buses)
  * TFT9488 Seperate Bus. Touch2046/SD Card Shared Bus.
@@ -16,7 +16,7 @@
  * TOUCH_CLK:  5 (SCLK)                 -> Clock from ESP32 to XPT2046/SD Card
  * TOUCH_DO:   6 (MISO)                 -> Data Out from XPT2046/SD Card
  * TOUCH_CS:   15                       -> Touch Chip Select
- * TOUCH_IRQ:   1                       -> Touch Interrupt (Active LOW) Use 1 and test
+ * TOUCH_IRQ:   1                       -> Touch Interrupt (Active LOW)
  * SD_CS:      21                       -> SD Card Chip Select
  * * --- POWER & GROUND ---
  * VCC:    3.3V or 5V (Check Screen Regulator)
