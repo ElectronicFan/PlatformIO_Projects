@@ -21,23 +21,24 @@ static NimBLERemoteCharacteristic* pRemoteCharacteristic = nullptr;
 //-----------------------------------------------------------
 class MyClientCallback : public NimBLEClientCallbacks 
 {
-    void onConnect(NimBLEClient* pClient) 
+    void onConnect(NimBLEClient* pClient) override
     {
         Serial.println(" - onConnect");
     }
 
-    void onDisconnect(NimBLEClient* pClient) 
+    void onDisconnect(NimBLEClient* pClient, int reason) override
     {
         Serial.println(" - onDisconnect");
     }
 };
 
 //-----------------------------------------------------------
-// * Scan for BLE servers and find the first one that advertises the service we are looking for.
+// * Scan for BLE servers and find the first one that advertises the service uuid or name we are looking for.
 //-----------------------------------------------------------
 class MyAdvertisedDeviceCallbacks : public NimBLEScanCallbacks 
 {
-    void onResult(const NimBLEAdvertisedDevice* advertisedDevice) override {
+    void onResult(const NimBLEAdvertisedDevice* advertisedDevice) override 
+    {
         Serial.println("------------------------------");
         Serial.println("BLE Advertised Device found:");
 
@@ -174,7 +175,7 @@ bool bleconnectToServer()
 }
 
 //-----------------------------------------------------------
-//Setup
+//Setup Scan
 //-----------------------------------------------------------
 void bleDoScan() 
 {
@@ -193,7 +194,7 @@ void bleDoScan()
 }
 
 //-----------------------------------------------------------
-//Check connection
+//Check Connection
 //-----------------------------------------------------------
 bool bleIsConnected()
 {

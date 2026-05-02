@@ -48,7 +48,8 @@ XPT2046_Touchscreen touch(TOUCH_CS, TOUCH_IRQ);
 MenuState currentMenu = MAIN;
 bool wasTouched = false;
 
-void setup() {
+void setup() 
+{
     Serial.begin(115200);
     delay(2500); // Good delay for the S3 USB Serial to catch up. Can remove if debugging not needed!
 
@@ -77,7 +78,8 @@ void setup() {
     Serial.println("Issac Engineer Go-Box Ready.");
 }
 
-void loop() {
+void loop() 
+{
     bool isCurrentlyTouched = touch.touched();
 
     // Only act if it's a NEW touch
@@ -109,7 +111,8 @@ void loop() {
 }
 
 // --- TOUCH HANDLER ---
-void handleTouch() {
+void handleTouch() 
+{
     TS_Point p = touch.getPoint();
     
     // X is fine (Left to Right)
@@ -131,10 +134,12 @@ void handleTouch() {
 }
 
 // --- CORE UI CONTROLLER ---
-void drawUI() {
+void drawUI() 
+{
     tft.fillScreen(TFT_BLACK);
     
-    switch (currentMenu) {
+    switch (currentMenu) 
+    {
         case MAIN:     drawMainMenu();    break;
         case FLASH:    drawFlashMenu();   break;
         case BT_CHECK: drawBTMenu();      break;
@@ -144,7 +149,8 @@ void drawUI() {
 }
 
 // --- MAIN MENU ---
-void drawMainMenu() {
+void drawMainMenu() 
+{
     tft.setTextColor(TFT_YELLOW);
     tft.drawCentreString("ISSAC ENGINEER UPLOADER", 240, 10, 4);
     
@@ -156,7 +162,8 @@ void drawMainMenu() {
 }
 
 // --- SUB-MENUS ---
-void drawFlashMenu() {
+void drawFlashMenu() 
+{
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
     tft.drawCentreString("FLASH MODE", 240, 20, 4);
     tft.drawRect(20, 80, 440, 150, TFT_WHITE); // Hex file list area
@@ -164,13 +171,15 @@ void drawFlashMenu() {
     drawBackButton();
 }
 
-void drawBTMenu() {
+void drawBTMenu() 
+{
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
     //tft.setTextSize(2); // Multiplies the size of the font you call next
     tft.drawCentreString("BLUETOOTH STATUS", 240, 20, 4);
     tft.setTextColor(TFT_CYAN);
     
-    if (bleIsConnected()) {
+    if (bleIsConnected()) 
+    {
         // Update your ILI9488 display to show a green icon or "Online"
         tft.drawCentreString("BT Module: CONNECTED", 240, 120, 2);
         // DEVICE NAME
@@ -192,7 +201,8 @@ void drawBTMenu() {
     drawBackButton();
 }
 
-void drawCalibMenu() {
+void drawCalibMenu() 
+{
     uint16_t calibrationData[5];
 
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
@@ -206,7 +216,8 @@ void drawCalibMenu() {
     
 }
 
-void drawAboutMenu() {
+void drawAboutMenu() 
+{
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
     tft.drawCentreString("ABOUT", 240, 20, 4);
     tft.setCursor(60, 100);
@@ -219,18 +230,21 @@ void drawAboutMenu() {
 }
 
 // --- UI HELPERS ---
-void createButton(int x, int y, int w, int h, uint32_t color, const char *label) {
+void createButton(int x, int y, int w, int h, uint32_t color, const char *label) 
+{
     tft.fillRoundRect(x, y, w, h, 10, color);
     tft.drawRoundRect(x, y, w, h, 10, TFT_WHITE);
     tft.setTextColor(TFT_WHITE);
     tft.drawCentreString(label, x + (w / 2), y + (h / 2) - 10, 4);
 }
 
-void drawBackButton() {
+void drawBackButton() 
+{
     createButton(360, 260, 100, 45, TFT_DARKGREY, "BACK");
 }
 
-void changeMenu(MenuState next) {
+void changeMenu(MenuState next) 
+{
     if (currentMenu == next) return;  // prevents redraw spam
     currentMenu = next;
     drawUI();
