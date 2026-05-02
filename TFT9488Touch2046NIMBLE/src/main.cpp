@@ -98,7 +98,7 @@ void loop()
         } else {
             Serial.println("We have failed to connect to the server; there is nothing more we will do.");
         }
-        doScan = true;    // make sure to reallow it but it wont trigger when connected!  
+        doScan = true;    // make sure to reallow it but it wont trigger when connected!  put this in onDisconnect event??
     }
 
     if (!bleIsConnected() && doConnect == false && doScan == true) 
