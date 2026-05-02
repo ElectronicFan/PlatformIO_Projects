@@ -9,11 +9,11 @@ bool bleIsConnected();
 void bleDisconnect();
 void bleDoScan();
 
-//extern bool connected;
+//extern bool
 extern bool doConnect;
 extern bool doScan;
 
 // Device + service tracking
-extern NimBLEAdvertisedDevice* myDevice;
+extern NimBLEAdvertisedDevice* myDevice;        // main needs access to info
 
 #endif

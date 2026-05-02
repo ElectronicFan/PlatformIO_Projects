@@ -9,10 +9,12 @@ NimBLEAdvertisedDevice* myDevice = nullptr;
 
 // Internal (file-local) variables
 static String targetDeviceName = "HM10";
-static NimBLEUUID charUUID((uint16_t)0xFFE1);
 static NimBLEUUID serviceUUID("0000ffe0-0000-1000-8000-00805f9b34fb");
-static NimBLERemoteCharacteristic* pRemoteCharacteristic = nullptr;
+static NimBLEUUID charUUID((uint16_t)0xFFE1);
+
 static NimBLEClient* pClient = nullptr;
+static NimBLERemoteService* pRemoteService = nullptr;
+static NimBLERemoteCharacteristic* pRemoteCharacteristic = nullptr;
 
 //-----------------------------------------------------------
 //Connect/Disconnect event
@@ -95,13 +97,16 @@ bool bleconnectToServer()
     doConnect = false;          // prevent repeated attempts
 
     // 1. Important to delete client or it will crash anytime you reconnect.
+    Serial.println("Cleaning up old client memory...");
     if (pClient != nullptr) 
     {
-        Serial.println("Cleaning up old client memory...");
         pClient->disconnect();
         NimBLEDevice::deleteClient(pClient); 
         pClient = nullptr; 
     }
+    // Clear old references
+    pRemoteService = nullptr;
+    pRemoteCharacteristic = nullptr;
         
     Serial.println("Starting Pre-Flight Check...");
     Serial.print("Forming a connection to ");
@@ -125,7 +130,7 @@ bool bleconnectToServer()
     Serial.println(" - Connected to server");
     
     // 4. Obtain a reference to the service
-    NimBLERemoteService *pRemoteService = pClient->getService(serviceUUID);
+    pRemoteService = pClient->getService(serviceUUID);
     if (pRemoteService == nullptr) 
     {
         Serial.print("Failed to find our service UUID: ");
@@ -173,19 +178,17 @@ bool bleconnectToServer()
 //-----------------------------------------------------------
 void bleDoScan() 
 {
-    doScan = false;     // prevent repeated attempts
-
     Serial.println("Starting Arduino NimBLE Client application...");
-    NimBLEDevice::init("");
+    doScan = false;     // prevent repeated attempts
+    myDevice = nullptr;
 
+    NimBLEDevice::init("");
     NimBLEScan* pBLEScan = NimBLEDevice::getScan();
 
     pBLEScan->setScanCallbacks(new MyAdvertisedDeviceCallbacks(), true);
-
     pBLEScan->setActiveScan(true);
     pBLEScan->setInterval(100);
     pBLEScan->setWindow(90);
-
     pBLEScan->start(0, false);
 }
 
