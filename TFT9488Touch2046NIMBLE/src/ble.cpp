@@ -170,6 +170,7 @@ bool connectToServer()
         return false;
     }
 
+    doConnect = false;
     return true;
 }
 
