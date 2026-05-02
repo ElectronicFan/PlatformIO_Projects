@@ -97,7 +97,7 @@ void loop() {
         }
     }
 
-    if (!bleIsConnected() && !doConnect && doScan == false) {
+    if (!bleIsConnected() && !doConnect && doScan == true) {
         Serial.println("BLE is not connected, attempting to reconnect...");
         bleDoScan();
     }
