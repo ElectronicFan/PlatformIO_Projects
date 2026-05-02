@@ -83,6 +83,7 @@ public:
             }
 
             myDevice = new NimBLEAdvertisedDevice(*advertisedDevice);
+            doScan = true;    // make sure to reallow it but it wont trigger when connected!    
             doConnect = true;
             Serial.println("Ready to connect...");
         }
@@ -94,8 +95,8 @@ public:
 //-----------------------------------------------------------
 bool connectToServer() 
 {
-    doConnect = false;
-    
+    doConnect = false;          // prevent repeated attempts
+
     // 1. Important to delete client or it will crash anytime you reconnect.
     if (pClient != nullptr) 
     {
@@ -170,6 +171,7 @@ bool connectToServer()
         return false;
     }
 
+    //doConnect = false;
     return true;
 }
 
@@ -178,7 +180,7 @@ bool connectToServer()
 //-----------------------------------------------------------
 void bleDoScan() 
 {
-    doScan = false;
+    doScan = false;     // prevent repeated attempts
 
     Serial.println("Starting Arduino NimBLE Client application...");
     NimBLEDevice::init("");

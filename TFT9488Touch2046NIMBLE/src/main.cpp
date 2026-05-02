@@ -93,12 +93,11 @@ void loop() {
         if (connectToServer()) {
             Serial.println("We are now connected to the BLE Server.");
         } else {
-            doScan = true;
             Serial.println("We have failed to connect to the server; there is nothing more we will do.");
         }
     }
 
-    if (!bleIsConnected() && !doConnect && doScan == true) {
+    if (!bleIsConnected() && doConnect == false && doScan == true) {
         Serial.println("BLE is not connected, attempting to reconnect...");
         bleDoScan();
     }
