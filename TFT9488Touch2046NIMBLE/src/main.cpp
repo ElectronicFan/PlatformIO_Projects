@@ -90,19 +90,18 @@ void loop() {
     wasTouched = isCurrentlyTouched;
 
     if (doConnect == true) {
+        doConnect = false;          // prevent repeated attempts
         if (connectToServer()) {
             Serial.println("We are now connected to the BLE Server.");
         } else {
             Serial.println("We have failed to connect to the server; there is nothing more we will do.");
+            doScan = true;          // retry via scan instead
         }
     }
 
-    if (doScan == false) {
-        if (!bleIsConnected())
-            {
-                Serial.println("BLE is not connected, attempting to reconnect...");
-                bleDoScan();
-            }
+    if (!bleIsConnected() && !doConnect && doScan == false) {
+        Serial.println("BLE is not connected, attempting to reconnect...");
+        bleDoScan();
     }
  
     delay(10);
