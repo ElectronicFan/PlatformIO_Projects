@@ -90,6 +90,7 @@ void loop() {
     wasTouched = isCurrentlyTouched;
 
     if (doConnect == true) {
+        doScan = true;    // make sure to reallow it but it wont trigger when connected!
         if (connectToServer()) {
             Serial.println("We are now connected to the BLE Server.");
         } else {
