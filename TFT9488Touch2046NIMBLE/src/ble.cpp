@@ -82,8 +82,7 @@ public:
                 myDevice = nullptr;
             }
 
-            myDevice = new NimBLEAdvertisedDevice(*advertisedDevice);
-            doScan = true;    // make sure to reallow it but it wont trigger when connected!    
+            myDevice = new NimBLEAdvertisedDevice(*advertisedDevice);    
             doConnect = true;
             Serial.println("Ready to connect...");
         }
