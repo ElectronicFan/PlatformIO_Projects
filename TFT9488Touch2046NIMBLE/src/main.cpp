@@ -90,7 +90,6 @@ void loop() {
     wasTouched = isCurrentlyTouched;
 
     if (doConnect == true) {
-        doConnect = false;          // prevent repeated attempts
         if (connectToServer()) {
             Serial.println("We are now connected to the BLE Server.");
         } else {
