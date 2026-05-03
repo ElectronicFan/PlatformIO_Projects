@@ -14,6 +14,6 @@ extern bool doConnect;
 extern bool doScan;
 
 // Device + service tracking
-extern NimBLEAdvertisedDevice* myDevice;        // main needs access to info
+extern NimBLEAdvertisedDevice* myDevice;        // display_logic.cpp needs access to info
 
 #endif

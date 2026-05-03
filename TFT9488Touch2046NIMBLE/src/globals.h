@@ -11,6 +11,6 @@ enum MenuState { MAIN, FLASH, BT_CHECK, CALIB, ABOUT };
 // External references so other files can see them
 extern TFT_eSPI tft;
 extern XPT2046_Touchscreen touch;
-extern MenuState currentMenu;
+//extern MenuState currentMenu;
 
 #endif
