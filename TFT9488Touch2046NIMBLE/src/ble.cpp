@@ -182,7 +182,6 @@ void bleDoScan()
 {
     Serial.println("Starting Arduino NimBLE Client application...");
     doScan = false;     // prevent repeated attempts
-    myDevice = nullptr;
 
     NimBLEDevice::init("");
     NimBLEScan* pBLEScan = NimBLEDevice::getScan();
