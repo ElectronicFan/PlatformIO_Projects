@@ -10,7 +10,7 @@
 #define SD_CS 21
 
 // Menu States
-enum MenuState { MAIN, FLASH, BT_CHECK, CALIB, ABOUT };
+enum MenuState { MAIN, FLASH, BT_CHECK, SYSTEM, ABOUT };
 
 // External references so other files can see them
 extern TFT_eSPI tft;

@@ -20,7 +20,7 @@ void handleTouch()
     if (currentMenu == MAIN) {
         if (x > 20 && x < 230 && y > 60 && y < 170)    changeMenu(FLASH);
         if (x > 250 && x < 460 && y > 60 && y < 170)   changeMenu(BT_CHECK);
-        if (x > 20 && x < 230 && y > 190 && y < 300)   changeMenu(CALIB);
+        if (x > 20 && x < 230 && y > 190 && y < 300)   changeMenu(SYSTEM);
         if (x > 250 && x < 460 && y > 190 && y < 300)  changeMenu(ABOUT);
     } else {
         if (x > 360 && x < 460 && y > 260 && y < 305)  changeMenu(MAIN);        // Back button
@@ -37,7 +37,7 @@ void drawUI()
         case MAIN:     drawMainMenu();    break;
         case FLASH:    drawFlashMenu();   break;
         case BT_CHECK: drawBTMenu();      break;
-        case CALIB:    drawSystemMenu();   break;
+        case SYSTEM:    drawSystemMenu();   break;
         case ABOUT:    drawAboutMenu();   break;
     }
 }
@@ -48,7 +48,7 @@ void drawMainMenu()
     tft.setTextColor(TFT_YELLOW);
     tft.drawCentreString("ISSAC ENGINEER UPLOADER", 240, 10, 4);
     
-    // Grid: [Flash] [BT] / [Calib] [About]
+    // Grid: [Flash] [BT] / [System] [About]
     createButton(20,  60,  210, 110, TFT_RED,    "FLASH");
     createButton(250, 60,  210, 110, TFT_BLUE,   "CHECK BT");
     createButton(20,  190, 210, 110, TFT_GREEN,  "CHECK_SYS");
