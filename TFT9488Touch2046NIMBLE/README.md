@@ -53,6 +53,7 @@
 
 1. Clone the repository
 2. Open in VS Code with PlatformIO
+3. Get flash.bin and config.map from B4J Uploader and place them in SD Card for testing.  Select PIC config and load intel hex file. It will automaticallycreate those required files.
 
 ---
 
