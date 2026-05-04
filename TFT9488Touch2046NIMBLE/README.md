@@ -1,4 +1,4 @@
-# 📺 ESP32-S3 TFT + Touch + SD + BLE Project
+# 📺 ESP32-S3 + TFT + Touch + SD + BLE Project
 
 ---
 
@@ -57,5 +57,5 @@
 ---
 
 ## Note
-* BT_Check is only functional.  You can experiment with BLE by powering on and off the HM-10 and checking the status.
+* You can experiment with BLE by powering on and off the HM-10 and checking the status.  Also, removing and inserting the SD Card and checking with **FLASH** button.  In the future i will include a working flash uploader for microchip.  
 
