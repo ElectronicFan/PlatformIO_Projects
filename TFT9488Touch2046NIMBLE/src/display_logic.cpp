@@ -249,7 +249,7 @@ void drawAboutMenu()
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
     tft.drawCentreString("ABOUT", 240, 20, 4);
     tft.drawString("Firmware: v1.0", 5, 80, 2);
-    tft.drawString("Engineer: Issac Engineer", 5, 100, 2);
+    tft.drawString("Engineer: Test Engineer", 5, 100, 2);
     tft.drawString("Hardware: ESP32 + ILI9488", 5, 120, 2);
     drawBackButton();
 }
