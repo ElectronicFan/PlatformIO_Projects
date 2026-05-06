@@ -83,7 +83,7 @@ void setup() {
 
     drawUI();
     
-    Serial.println("Issac Engineer Go-Box Ready.");
+    Serial.println("Engineer Go-Box Ready.");
 }
 
 void loop() {
@@ -179,7 +179,7 @@ void drawAboutMenu() {
     tft.setCursor(60, 100);
     tft.println("Firmware: v1.0");
     tft.setCursor(60, 130);
-    tft.println("Engineer: Issac Engineer");
+    tft.println("Engineer: Test Engineer");
     tft.setCursor(60, 160);
     tft.println("Hardware: ESP32 + ILI9488");
     drawBackButton();
