@@ -138,7 +138,7 @@ void drawUI() {
 // --- MAIN MENU ---
 void drawMainMenu() {
     tft.setTextColor(TFT_YELLOW);
-    tft.drawCentreString("ISSAC ENGINEER UPLOADER", 240, 10, 4);
+    tft.drawCentreString("ENGINEER UPLOADER", 240, 10, 4);
     
     // Grid: [Flash] [BT] / [Calib] [About]
     createButton(20,  60,  210, 110, TFT_RED,    "FLASH");
