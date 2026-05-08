@@ -13,6 +13,6 @@ Samples of PlatFormIO  projects
 
 ### Visual Studio Code IDE
 * Download Visual Studio Code IDE here:  
-* [https://www.arduino.cc/en/software](https://code.visualstudio.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/download)
 
 * Install Extension PlatformIO IDE by PlatformIO
