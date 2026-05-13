@@ -1,12 +1,12 @@
-// Version 1.02
+// Version 1.03
 
 #include <ESP8266WiFi.h>
 
-WiFiServer server(8080); // B4J will connect to this port
-WiFiClient client;
-
 // On DT-06/ESP8285, GPIO4 is typically the onboard LED
 #define LED_PIN 4
+
+WiFiServer server(8080); // B4J will connect to this port
+WiFiClient client;
 
 // Buffer for bridging data from Serial to WiFi. Size can be adjusted based on needs and memory constraints.
 static uint8_t bridgeBuffer[2048];    
@@ -46,14 +46,14 @@ void loop()
      
      if (newClient) 
      {
-     // If we already have a client, stop the old one to free up the socket
-     if (client) 
-     {
-          client.stop();
-     }
+          // If we already have a client, stop the old one to free up the socket
+          if (client) 
+          {
+               client.stop();
+          }
           client = newClient;
           client.setNoDelay(true); 
-          digitalWrite(LED_PIN, LOW);
+          digitalWrite(LED_PIN, LOW);        // Turn on LED when client connects (active LOW)
      }
 
      // --- 2. Data Bridge (Active Connection) ---
@@ -82,8 +82,7 @@ void loop()
           {
                Serial.write(client.read());
           }
-
-
+          
      } else {
           // --- 3. Heartbeat (Disconnected Mode) ---
           // Blink every 500ms without using delay()
@@ -98,7 +97,6 @@ void loop()
           // fill up while we are waiting for a connection
           while(Serial.available() > 0) { Serial.read(); }
           bufferIdx = 0; 
-
      }
 
 }
